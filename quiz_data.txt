@@ -1,0 +1,50 @@
+{
+    "Question": What is the result of 7 + 5?
+    {
+        "a": 11
+        "b": 12
+        "c": 13
+        "d": 14
+    }
+    "Answer": b
+},
+{
+    "Question": What is the product of 8 x 3?
+    {
+        "a": 20
+        "b": 24
+        "c": 25
+        "d": 27
+    }
+    "Answer": b
+},
+{
+    "Question": What is the value of pi approximately?
+    {
+        "a": 3
+        "b": 3.14
+        "c": 3.141
+        "d": 3.1416
+    }
+    "Answer": b
+},
+{
+    "Question": If a rectangle has a length of 6 units and a width of 4 units, what is its area?
+    {
+        "a": 10 squ
+        "b": 16 squ
+        "c": 20 squ
+        "d": 24 squ
+    }
+    "Answer": b
+},
+{
+    "Question": What is the next number in the sequence: 2, 4, 6, 8, ...?
+    {
+        "a": 10
+        "b": 9
+        "c": 12
+        "d": 14
+    }
+    "Answer": a
+}
