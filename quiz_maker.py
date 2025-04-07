@@ -15,17 +15,12 @@ class Question:
         self.options[choice] = option
 
 class Quiz:
-    def __init__(self):
-        self.temp = 0
+    def __init__(self, path):
+        self.file_path = path
         self.items = 0
-
-    def new(self, file_path):
-        file = open(file_path, 'w')
-        file.close()
     
-    def add(self, file_path):
-        file = open(file_path, 'a')
-
+    def add(self):
+        questions = []
         while(True):
             print("Question", self.items + 1, ": Input --1 in question to stop")
         
@@ -42,20 +37,35 @@ class Quiz:
             ans = ""
             while(not(ans in ['a', 'b', 'c', 'd'])):
                 ans = input("Input correct option: ")
+            temp.answer = ans
 
-
-            file.write(temp.question)
+            questions.append(temp)
+            self.items += 1
+        self.write_to_file(questions)
+        
+    def write_to_file(self, questions):
+        file = open(self.file_path, 'a')
+        block = " " * 4
+        inp_txt = []
+        
+        for item in questions:
+            inp_txt.append("{")
+            inp_txt.append(block + "\"Question\": " + item.question)
+            inp_txt.append(block + "{")
             for idx in range(4):
                 letter = chr(code_a + idx)
-                file.write(letter + " " + temp.options[letter])
-            file.write(ans)
-
-
-            self.items += 1
+                inp_txt.append(block * 2 + "\"" + letter + "\": " + item.options[letter])
+            inp_txt.append(block + "}")
+            inp_txt.append(block + "\"Answer\": " + item.answer)
+            inp_txt.append("}")
+            
+            
+        for txt in inp_txt:
+            file.write(txt + "\n")
         
         file.close()
-
+                    
 if __name__ == "__main__":
     file_path = "quiz_data.txt"
-    quiz = Quiz()
-    quiz.add(file_path)
+    quiz = Quiz(file_path)
+    quiz.add()
