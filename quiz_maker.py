@@ -13,12 +13,10 @@ class Question:
         self.options[choice] = option
 
     def print(self, number = -1):
-        code_a = ord('a')
         if number != -1:
             print(str(number) + ". ", end = "")
         print("Question: ", self.question)
-        for idx in range(4):
-            letter = chr(code_a + idx)
+        for letter in self.options:
             print("  " + letter + ". " + self.options[letter])
         print("  Answer: " + self.answer) 
 
@@ -31,7 +29,6 @@ class Quiz:
     def add(self):
         stop_query = "save"
         quests_to_add = []
-        code_a = ord('a')
         while(True):
             print("Question", self.items + 1, ": Input \"" + stop_query + "\" in question to record inputs")
 
@@ -42,14 +39,13 @@ class Quiz:
             if temp.question == stop_query: break
 
             #OPTIONS INPUTS
-            for idx in range(4):
-                letter = chr(code_a + idx)
+            for letter in temp.options:
                 option = input("Input option " + letter + " : ")
                 temp.add_option(letter, option)
 
             #ANSWER INPUTS
             ans = ""
-            while(not(ans in ['a', 'b', 'c', 'd'])):
+            while(not(ans in temp.options.keys())):
                 ans = input("Input correct option: ")
             temp.answer = ans
 
@@ -62,14 +58,12 @@ class Quiz:
         file = open(self.file_path, 'a')
         block = " " * 4
         inp_txt = []
-        code_a = ord('a')
         
         for item in questions:
             inp_txt.append("{")
             inp_txt.append(block + "\"Question\": " + item.question)
             inp_txt.append(block + "{")
-            for idx in range(4):
-                letter = chr(code_a + idx)
+            for letter in item.options:
                 inp_txt.append(block * 2 + "\"" + letter + "\": " + item.options[letter])
             inp_txt.append(block + "}")
             inp_txt.append(block + "\"Answer\": " + item.answer)
@@ -83,12 +77,39 @@ class Quiz:
         
         file.close()
 
+    def read_from_file(self):
+        file = open(self.file_path, 'r')
+        block = " " * 4
+        self.questions.clear()
+        temp = Question()
+
+        for lin in file:
+            line = lin.lstrip()
+            print(line)
+
+            if line.startswith("\"Question:\""):
+                temp.question = line[len("\"Question:\"") + 2:]
+            if line.startswith("\"a\""):
+                temp.options['a'] = line[5:]
+            if line.startswith("\"b\""):
+                temp.options['b'] = line[5:]
+            if line.startswith("\"c\""):
+                temp.options['c'] = line[5:]
+            if line.startswith("\"d\""):
+                temp.options['d'] = line[5:]
+            if line.startswith("\"Answer:\""):
+                temp.answer = line[len("\"Answer:\"") + 2:]
+            if lin == "}":
+                print("yee")
+                questions.append(temp)
+        file.close()
+
     def print(self):
         for idx in range(len(self.questions)):
-            self.questions[idx + 1].print(idx)
+            self.questions[idx].print(idx + 1)
             
 if __name__ == "__main__":
-    file_path = "quiz_data1.txt"
+    file_path = "quiz_data.txt"
     quiz = Quiz(file_path)
-    quiz.add()
+    quiz.read_from_file()
     quiz.print()
