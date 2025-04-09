@@ -36,6 +36,9 @@ def check_file_dir(file_path):
 
         notice.place(relx = 0.03, rely = 0.15)
 
+def add_question(quest, opt_a, opt_b, opt_c, opt_d, ans):
+    pass
+
 def new_quiz():
     clear_screen()
 
@@ -126,6 +129,31 @@ def new_quiz():
         tk,
         width = 1,
         font = subtitle_font
+    )
+
+    confirm = Button(
+        tk,
+        text = "Add",
+        font = subtitle_font,
+        background = dark_color,
+        foreground = txt_color,
+        command = lambda: add_question(
+                quest_text.get("1.0", "end-1c"),
+                opt_a_text.get("1.0", "end-1c"),
+                opt_b_text.get("1.0", "end-1c"),
+                opt_c_text.get("1.0", "end-1c"),
+                opt_d_text.get("1.0", "end-1c"),
+                ans_text.get("1.0", "end-1c")
+            )
+    )
+
+    reset = Button(
+        tk,
+        text = "Clear",
+        font = subtitle_font,
+        background = dark_color,
+        foreground = txt_color
+        command = lambda: new_quiz()
     )
 
     label1.place(x = 10, y = 10)
