@@ -5,6 +5,7 @@ import os
 bg_color = "#1a1a1a"
 title_font = ("Arial", 40, "bold")
 subtitle_font = ("Arial", 15, "bold")
+small_text_font = ("Arial", 10)
 button_font = ("Arial", 15)
 
 txt_color = "white"
@@ -15,11 +16,31 @@ tk = Tk()
 def clear_screen():
     for widget in tk.winfo_children():
         widget.destroy()
-
-def check_file_dir(file_path):
     
+def check_file_dir(file_path):
+    if not file_path.endswith(".txt"):
+        file_path += ".txt"
 
-def new_quiz_menu():
+    print(file_path)
+
+    if not os.path.exists(file_path):
+        print("ye")
+        pass
+    else:
+        notice = Label(
+            tk,
+            text = "* File already exists",
+            font = small_text_font,
+            background = bg_color,
+            foreground = "red"
+        )
+
+        notice.place(relx = 0.03, rely = 0.15)
+
+def new_quiz():
+    pass
+
+def get_file_path():
     clear_screen()
     
     subtitle = Label(
@@ -44,7 +65,7 @@ def new_quiz_menu():
         text = "Confirm",
         font = button_font,
         background = dark_color,
-        foreground = txt_color
+        foreground = txt_color,
         command = lambda: check_file_dir(inp_file.get())
     )
     
@@ -67,7 +88,7 @@ def window_menu():
         font = button_font,
         bg = dark_color,
         fg = txt_color,
-        command = new_quiz_menu
+        command = get_file_path
     )
 
     edit_quiz = Button(
@@ -76,7 +97,7 @@ def window_menu():
         font = button_font,
         bg = dark_color,
         fg = txt_color,
-        command = new_quiz_menu
+        command = get_file_path
     )
 
     title.place(relx = 0.5, rely = 0.3, anchor = "center")
