@@ -77,33 +77,6 @@ class Quiz:
         
         file.close()
 
-    def read_from_file(self):
-        file = open(self.file_path, 'r')
-        block = " " * 4
-        self.questions.clear()
-        temp = Question()
-
-        for lin in file:
-            line = lin.lstrip()
-            print(line)
-
-            if line.startswith("\"Question:\""):
-                temp.question = line[len("\"Question:\"") + 2:]
-            if line.startswith("\"a\""):
-                temp.options['a'] = line[5:]
-            if line.startswith("\"b\""):
-                temp.options['b'] = line[5:]
-            if line.startswith("\"c\""):
-                temp.options['c'] = line[5:]
-            if line.startswith("\"d\""):
-                temp.options['d'] = line[5:]
-            if line.startswith("\"Answer:\""):
-                temp.answer = line[len("\"Answer:\"") + 2:]
-            if lin == "}":
-                print("yee")
-                questions.append(temp)
-        file.close()
-
     def print(self):
         for idx in range(len(self.questions)):
             self.questions[idx].print(idx + 1)
@@ -111,5 +84,5 @@ class Quiz:
 if __name__ == "__main__":
     file_path = "quiz_data.txt"
     quiz = Quiz(file_path)
-    quiz.read_from_file()
-    quiz.print()
+    quiz.add()
+    
