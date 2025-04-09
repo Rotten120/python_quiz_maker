@@ -26,6 +26,11 @@ class Quiz:
         self.questions = []
         self.items = 0
     
+    def append(self, Question quest):
+        self.questions.append(quest)
+        self.write_to_file([quest])
+        items += 1
+
     def add(self):
         stop_query = "save"
         quests_to_add = []
