@@ -27,9 +27,11 @@ class Quiz:
         self.items = 0
     
     def append(self, Question quest):
+        if not quest.ans in quest.options.keys(): return False
         self.questions.append(quest)
         self.write_to_file([quest])
-        items += 1
+        self.items += 1
+        return True
 
     def add(self):
         stop_query = "save"
