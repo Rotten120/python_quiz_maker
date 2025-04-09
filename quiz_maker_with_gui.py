@@ -24,8 +24,7 @@ def check_file_dir(file_path):
     print(file_path)
 
     if not os.path.exists(file_path):
-        print("ye")
-        pass
+        new_quiz()
     else:
         notice = Label(
             tk,
@@ -38,7 +37,110 @@ def check_file_dir(file_path):
         notice.place(relx = 0.03, rely = 0.15)
 
 def new_quiz():
-    pass
+    clear_screen()
+
+    label1 = Label(
+        tk,
+        text = "Question",
+        font = subtitle_font,
+        background = bg_color,
+        foreground = txt_color
+    )
+
+    label2 = Label(
+        tk,
+        text = "Option A",
+        font = subtitle_font,
+        background = bg_color,
+        foreground = txt_color
+    )
+
+    label3 = Label(
+        tk,
+        text = "Option B",
+        font = subtitle_font,
+        background = bg_color,
+        foreground = txt_color
+    )
+
+    label4 = Label(
+        tk,
+        text = "Option C",
+        font = subtitle_font,
+        background = bg_color,
+        foreground = txt_color
+    )
+
+    label5 = Label(
+        tk,
+        text = "Option D",
+        font = subtitle_font,
+        background = bg_color,
+        foreground = txt_color
+    )
+
+    label6 = Label(
+        tk,
+        text = "Correct Option",
+        font = subtitle_font,
+        background = bg_color,
+        foreground = txt_color
+    )
+
+    quest_text = Text(
+        tk,
+        height = 2,
+        width = 40,
+        font = small_text_font
+    )
+
+    opt_a_text = Text(
+        tk,
+        height = 2,
+        width = 40,
+        font = small_text_font
+    )
+
+    opt_b_text = Text(
+        tk,
+        height = 2,
+        width = 40,
+        font = small_text_font
+    )
+
+    opt_c_text = Text(
+        tk,
+        height = 2,
+        width = 40,
+        font = small_text_font
+    )
+
+    opt_d_text = Text(
+        tk,
+        height = 2,
+        width = 40,
+        font = small_text_font
+    )
+
+    ans_text = Entry(
+        tk,
+        width = 1,
+        font = subtitle_font
+    )
+
+    label1.place(x = 10, y = 10)
+    label2.place(x = 10, y = 80)
+    label3.place(x = 10, y = 150)
+    label4.place(x = 10, y = 220)
+    label5.place(x = 10, y = 290)
+    label6.place(x = 10, y = 360)
+    
+    quest_text.place(x = 10, y = 40)
+    opt_a_text.place(x = 10, y = 110)
+    opt_b_text.place(x = 10, y = 180)
+    opt_c_text.place(x = 10, y = 250)
+    opt_d_text.place(x = 10, y = 320)
+    ans_text.place(x = 160, y = 360)
 
 def get_file_path():
     clear_screen()
