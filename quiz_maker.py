@@ -12,6 +12,17 @@ class Question:
     def add_option(self, choice, option):
         self.options[choice] = option
 
+    def imp(self, args):
+        if len(args) != 10: return
+        self.question = args[1][16:]
+        self.answer = args[8][-1]
+        self.options = {
+            "a": args[3][13:],
+            "b": args[4][13:],
+            "c": args[5][13:],
+            "d": args[6][13:]
+        }
+
     def print(self, number = -1):
         if number != -1:
             print(str(number) + ". ", end = "")
@@ -69,7 +80,7 @@ class Quiz:
         for item in questions:
             inp_txt.append("{")
             inp_txt.append(block + "\"Question\": " + item.question)
-            inp_txt.append(block + "{")
+            inp_txt.append(block + "\"Options\": {")
             for letter in item.options:
                 inp_txt.append(block * 2 + "\"" + letter + "\": " + item.options[letter])
             inp_txt.append(block + "}")
@@ -84,6 +95,23 @@ class Quiz:
         
         file.close()
 
+    def read_from_file(self):
+        file = open(self.file_path, 'r')
+        lines = file.read().split('\n')
+        question_args = []
+
+        for line in lines:
+            if "{" in question_args:
+                question_args.append(line)
+            if line == "{" and len(question_args) == 0:
+                question_args.append(line)
+            if line == "}" or line == "},":
+                temp = Question()
+                temp.imp(question_args)
+                self.questions.append(temp)
+                self.items += 1
+                question_args.clear()
+
     def print(self):
         for idx in range(len(self.questions)):
             self.questions[idx].print(idx + 1)
@@ -91,5 +119,6 @@ class Quiz:
 if __name__ == "__main__":
     file_path = "quiz_data.txt"
     quiz = Quiz(file_path)
-    quiz.add()
+    quiz.read_from_file()
+    quiz.print()
     
