@@ -4,6 +4,7 @@ import ele_pre_sets as pre_set
 import os
 
 tk = Tk()
+quiz = q_maker.Quiz("")
 
 def clear_screen():
     for widget in tk.winfo_children():
@@ -12,18 +13,44 @@ def clear_screen():
 def check_file_dir(file_path):
     if not file_path.endswith(".txt"):
         file_path += ".txt"
-    if not os.path.exists(file_path):
+    if file_path == ".txt":
+        lbl_txt = "* Invalid file name"
+        notice = pre_set.label2(tk, lbl_txt, "red")
+        notice.place(relx = 0.03, rely = 0.15)
+    elif not os.path.exists(file_path):
+        quiz.file_path = file_path
         new_quiz()
     else:
-        lbl_txt = "* Fule already exists"
+        lbl_txt = "* File already exists"
         notice = pre_set.label2(tk, lbl_txt, "red")
         notice.place(relx = 0.03, rely = 0.15)
 
-def add_question(quest, opt_a, opt_b, opt_c, opt_d, ans):
-    pass
+def add_question(arr, ans):
+    #arr is question, opta, optb, optc, optd respectively
+    
+    for inp in (arr + [ans]):
+        if inp == "":
+            lbl_txt = "* Empty input. Fill up all items"
+            notice = pre_set.label2(tk, lbl_txt, "red")
+            notice.place(x = 110, y = 16)
+            return
+            
+    temp_question = q_maker.Question(arr[0], arr[1:], ans)
+    is_ans_valid = quiz.append(temp_question)
+    
+    if is_ans_valid:
+        lbl_txt = "* Question addded"
+        notice = pre_set.label2(tk, lbl_txt, "green")
+        notice.place(x = 110, y = 16)
+    else:
+        lbl_txt = "* Answer option is invalid"
+        notice = pre_set.label2(tk, lbl_txt, "red")
+        notice.place(x = 110, y = 16)
 
 def new_quiz():
     clear_screen()
+    txt_width = 40
+    txt_height = 2
 
     label_texts = [
         "Question", "Option A", "Option B", "Option C",
@@ -31,15 +58,15 @@ def new_quiz():
     ]
     
     labels = [pre_set.label1(tk, txt) for txt in label_texts]
-    texts = [pre_set.text1(tk, 50, 2) for i in range(len(label_texts) - 1)]
+    texts = [pre_set.text1(tk, txt_width, txt_height) for i in range(len(label_texts) - 1)]
     ans_text = Entry(tk, width = 1, font = pre_set.subtitle_font)
 
-    reset = pre_set.button1(tk, "Clear", lambda: new_quiz(file_path))
-    done = pre_set.button1(tk, "Back", window_menu)
-    confirm = pre_set.button1(
-        tk, "Add", lambda: add_question(
+    reset = pre_set.button2(tk, "  Clear   ", lambda: new_quiz())
+    done = pre_set.button2(tk, "   Back   ", window_menu)
+    confirm = pre_set.button2(
+        tk, "   Add    ", lambda: add_question(
             [text.get("1.0", "end-1c") for text in texts],
-            ans_text.get("1.0", "end-1c")
+            ans_text.get()
         )    
     )
 
@@ -49,9 +76,9 @@ def new_quiz():
         text.place(x = 10, y = 40 + idx * 70)
     ans_text.place(x = 160, y = 360)
     
-    confirm.place()
-    reset.place()
-    done.place()
+    confirm.place(x = 300, y = 100)
+    reset.place(x = 300, y = 200)
+    done.place(x = 300, y = 300)
 
 def get_file_path():
     clear_screen()
@@ -77,6 +104,7 @@ def get_file_path():
     confirm.place(relx = 0.88, rely = 0.94, anchor = "center")
 
 def window_menu():
+    clear_screen()
     title = Label(
         tk, text = "QUIZ MAKER",
         font = ("Arial", 40, "bold"),

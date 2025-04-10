@@ -27,7 +27,7 @@ class Quiz:
         self.items = 0
     
     def append(self, quest):
-        if not quest.ans in quest.options.keys(): return False
+        if not quest.answer in quest.options.keys(): return False
         self.questions.append(quest)
         self.write_to_file([quest])
         self.items += 1
