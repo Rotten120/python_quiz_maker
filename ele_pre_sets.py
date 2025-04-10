@@ -21,6 +21,13 @@ def button2(tk, txt, cmd):
         bg = dark_color, fg = "white",
         command = cmd
     )
+
+def button3(tk, txt, cmd):
+    return Button(
+        tk, text = txt, font = ("Arial", 10),
+        bg = dark_color, fg = "white",
+        command = cmd
+    )
         
 def label1(tk, txt, txt_color = "white"):
     return Label(
@@ -39,3 +46,9 @@ def text1(tk, x_size = 1, y_size = 1):
         tk, font = ("Arial", 10),
         width = x_size, height = y_size
     )    
+
+def radbut1(tk, var, val):
+    return Radiobutton(
+        tk, font = ("Arial", 10), variable = var,
+        value = val, bg = bg_color
+    )

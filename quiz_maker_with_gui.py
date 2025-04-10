@@ -38,47 +38,46 @@ def add_question(arr, ans):
     temp_question = q_maker.Question(arr[0], arr[1:], ans)
     is_ans_valid = quiz.append(temp_question)
     
-    if is_ans_valid:
-        lbl_txt = "* Question addded"
-        notice = pre_set.label2(tk, lbl_txt, "green")
-        notice.place(x = 110, y = 16)
-    else:
-        lbl_txt = "* Answer option is invalid"
-        notice = pre_set.label2(tk, lbl_txt, "red")
-        notice.place(x = 110, y = 16)
+    lbl_txt = "* Question addded"
+    notice = pre_set.label2(tk, lbl_txt, "green")
+    notice.place(x = 110, y = 16)
 
 def new_quiz():
     clear_screen()
-    txt_width = 40
+    txt_width = 42
     txt_height = 2
 
+    correct_opt = 'A'
+    opts = ['A', 'B', 'C', 'D']
     label_texts = [
         "Question", "Option A", "Option B", "Option C",
-        "Option D", "Correct Option"
+        "Option D"
     ]
     
     labels = [pre_set.label1(tk, txt) for txt in label_texts]
-    texts = [pre_set.text1(tk, txt_width, txt_height) for i in range(len(label_texts) - 1)]
-    ans_text = Entry(tk, width = 1, font = pre_set.subtitle_font)
+    texts = [pre_set.text1(tk, txt_width, txt_height) for i in label_texts]
 
-    reset = pre_set.button2(tk, "  Clear   ", lambda: new_quiz())
-    done = pre_set.button2(tk, "   Back   ", window_menu)
-    confirm = pre_set.button2(
-        tk, "   Add    ", lambda: add_question(
+    reset = pre_set.button3(tk, "Clear", lambda: new_quiz())
+    done = pre_set.button3(tk, "Back", window_menu)
+    confirm = pre_set.button3(
+        tk, "Add", lambda: add_question(
             [text.get("1.0", "end-1c") for text in texts],
-            ans_text.get()
+            correct_opt
         )    
     )
 
     for idx, label in enumerate(labels):
-        label.place(x = 10, y = 10 + idx * 70)
+        label.place(x = 5, y = 10 + idx * 70)
     for idx, text in enumerate(texts):
-        text.place(x = 10, y = 40 + idx * 70)
-    ans_text.place(x = 160, y = 360)
+        text.place(x = 5, y = 40 + idx * 70)
     
-    confirm.place(x = 300, y = 100)
-    reset.place(x = 300, y = 200)
-    done.place(x = 300, y = 300)
+    confirm.place(x = 265, y = 365, width = 130)
+    reset.place(x = 135, y = 365, width = 130)
+    done.place(x = 5, y = 365, width = 130)
+
+    for i, opt in enumerate(opts):
+        rb = pre_set.radbut1(tk, correct_opt, opt)
+        rb.place(x = 340, y = 115 + i * 70)
 
 def get_file_path():
     clear_screen()
@@ -114,7 +113,7 @@ def window_menu():
     new_txt = "Create New Quiz"
     new_quiz = pre_set.button2(tk, new_txt, get_file_path)
 
-    edit_txt = "Edit Existing Quiz"
+    edit_txt = "Add to Existing Quiz"
     edit_quiz = pre_set.button2(tk, edit_txt, get_file_path) 
 
     title.place(relx = 0.5, rely = 0.3, anchor = "center")
