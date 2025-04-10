@@ -35,9 +35,9 @@ def add_question(arr, ans):
             notice = pre_set.label2(tk, lbl_txt, "red")
             notice.place(x = 110, y = 16)
             return
-            
+
     temp_question = q_maker.Question(arr[0], arr[1:], ans)
-    is_ans_valid = quiz.append(temp_question)
+    quiz.append(temp_question)
     
     lbl_txt = "* Question addded"
     notice = pre_set.label2(tk, lbl_txt, "green")
@@ -48,9 +48,10 @@ def new_quiz():
     txt_width = 42
     txt_height = 2
 
-    correct_opt = 'A'
+    correct_opt = StringVar()
+    correct_opt.set('a')
     cor_opt_txt = "Correct\nOption"
-    opts = ['A', 'B', 'C', 'D']
+    opts = ['a', 'b', 'c', 'd']
     label_texts = [
         "Question", "Option A", "Option B", "Option C",
         "Option D"
@@ -65,7 +66,7 @@ def new_quiz():
     confirm = pre_set.button3(
         tk, "Add", lambda: add_question(
             [text.get("1.0", "end-1c") for text in texts],
-            correct_opt
+            correct_opt.get()
         )    
     )
 
