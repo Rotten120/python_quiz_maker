@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import filedialog
 import quiz_maker as q_maker
 import ele_pre_sets as pre_set
 import os
@@ -48,12 +49,14 @@ def new_quiz():
     txt_height = 2
 
     correct_opt = 'A'
+    cor_opt_txt = "Correct\nOption"
     opts = ['A', 'B', 'C', 'D']
     label_texts = [
         "Question", "Option A", "Option B", "Option C",
         "Option D"
     ]
-    
+
+    cor_opt = pre_set.label2(tk, cor_opt_txt)
     labels = [pre_set.label1(tk, txt) for txt in label_texts]
     texts = [pre_set.text1(tk, txt_width, txt_height) for i in label_texts]
 
@@ -70,7 +73,8 @@ def new_quiz():
         label.place(x = 5, y = 10 + idx * 70)
     for idx, text in enumerate(texts):
         text.place(x = 5, y = 40 + idx * 70)
-    
+
+    cor_opt.place(x = 326, y = 40)
     confirm.place(x = 265, y = 365, width = 130)
     reset.place(x = 135, y = 365, width = 130)
     done.place(x = 5, y = 365, width = 130)
@@ -79,7 +83,7 @@ def new_quiz():
         rb = pre_set.radbut1(tk, correct_opt, opt)
         rb.place(x = 340, y = 115 + i * 70)
 
-def get_file_path():
+def make_file_path():
     clear_screen()
     
     sub_txt = "Input file name"
@@ -102,6 +106,17 @@ def get_file_path():
     inp_file.place(relx = 0.29, rely = 0.12, anchor = "center")
     confirm.place(relx = 0.88, rely = 0.94, anchor = "center")
 
+def get_file_path():
+    file_path = filedialog.askopenfilename(
+        title = "Select a file",
+        filetypes = [("Text Files", "*.txt")]
+    )
+    
+    if file_path:
+        quiz.file_path = file_path
+    new_quiz()
+        
+
 def window_menu():
     clear_screen()
     title = Label(
@@ -111,7 +126,7 @@ def window_menu():
     )
 
     new_txt = "Create New Quiz"
-    new_quiz = pre_set.button2(tk, new_txt, get_file_path)
+    new_quiz = pre_set.button2(tk, new_txt, make_file_path)
 
     edit_txt = "Add to Existing Quiz"
     edit_quiz = pre_set.button2(tk, edit_txt, get_file_path) 
