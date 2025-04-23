@@ -12,19 +12,21 @@ def clear_screen():
         widget.destroy()
 
 def check_file_dir(file_path):
-    if not file_path.endswith(".txt"):
-        file_path += ".txt"
-    if file_path == ".txt":
+    if file_path == "":
         lbl_txt = "* Invalid file name"
         notice = pre_set.label2(tk, lbl_txt, "red")
         notice.place(relx = 0.03, rely = 0.15)
-    elif not os.path.exists(file_path):
-        quiz.file_path = file_path
-        add_question()
-    else:
+        return
+    elif not file_path.endswith(".txt"):
+        file_path += ".txt"
+
+    if os.path.exists(file_path):
         lbl_txt = "* File already exists"
         notice = pre_set.label2(tk, lbl_txt, "red")
         notice.place(relx = 0.03, rely = 0.15)
+    else:
+        quiz.file_path = file_path
+        add_question()
 
 def add_question(arr, ans):
     #arr is question, opta, optb, optc, optd respectively
