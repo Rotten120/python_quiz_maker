@@ -10,7 +10,7 @@ quiz = q_maker.Quiz("")
 def clear_screen():
     for widget in tk.winfo_children():
         widget.destroy()
-    
+
 def check_file_dir(file_path):
     if not file_path.endswith(".txt"):
         file_path += ".txt"
@@ -20,7 +20,7 @@ def check_file_dir(file_path):
         notice.place(relx = 0.03, rely = 0.15)
     elif not os.path.exists(file_path):
         quiz.file_path = file_path
-        new_quiz()
+        add_question()
     else:
         lbl_txt = "* File already exists"
         notice = pre_set.label2(tk, lbl_txt, "red")
@@ -43,7 +43,7 @@ def add_question(arr, ans):
     notice = pre_set.label2(tk, lbl_txt, "green")
     notice.place(x = 110, y = 16)
 
-def new_quiz():
+def add_question():
     clear_screen()
     txt_width = 42
     txt_height = 2
@@ -115,8 +115,15 @@ def get_file_path():
     
     if file_path:
         quiz.file_path = file_path
-    new_quiz()
-        
+        return True
+    return False
+    
+def edit_quiz():
+    if get_file_path():
+        add_question()
+
+def study_quiz():
+    pass
 
 def window_menu():
     clear_screen()
@@ -127,14 +134,18 @@ def window_menu():
     )
 
     new_txt = "Create New Quiz"
-    new_quiz = pre_set.button2(tk, new_txt, make_file_path)
+    new_quiz_btn = pre_set.button2(tk, new_txt, make_file_path)
 
     edit_txt = "Add to Existing Quiz"
-    edit_quiz = pre_set.button2(tk, edit_txt, get_file_path) 
+    edit_quiz_btn = pre_set.button2(tk, edit_txt, edit_quiz) 
+
+    study_txt = "Answer Quiz"
+    study_quiz_btn = pre_set.button2(tk, study_txt, study_quiz)
 
     title.place(relx = 0.5, rely = 0.3, anchor = "center")
-    new_quiz.place(relx = 0.5, rely = 0.6, anchor = "center")
-    edit_quiz.place(relx = 0.5, rely = 0.75, anchor = "center")
+    new_quiz_btn.place(relx = 0.5, rely = 0.5, anchor = "center")
+    edit_quiz_btn.place(relx = 0.5, rely = 0.65, anchor = "center")
+    study_quiz_btn.place(relx = 0.5, rely = 0.8, anchor = "center")
 
 if __name__ == "__main__":
     tk.title("Python Quiz Maker")
