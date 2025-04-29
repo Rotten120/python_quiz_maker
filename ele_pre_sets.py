@@ -40,7 +40,13 @@ def label2(tk, txt, txt_color = "white"):
         tk, text = txt, font = ("Arial", 10),
         bg = bg_color, fg = txt_color
     )
-    
+
+def entry1(tk, y_size = 1):
+    return Entry(
+        tk, font = ("Arial", 10), width = y_size,
+        bg = dark_color, fg = txt_color
+    )
+
 def text1(tk, x_size = 1, y_size = 1):
     return Text(
         tk, font = ("Arial", 10),
