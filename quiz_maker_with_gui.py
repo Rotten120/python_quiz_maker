@@ -26,7 +26,7 @@ def check_file_dir(file_path):
         notice.place(relx = 0.03, rely = 0.15)
     else:
         quiz.file_path = file_path
-        add_question()
+        add_question_window()
 
 def add_question(arr, ans):
     #arr is question, opta, optb, optc, optd respectively
@@ -45,7 +45,7 @@ def add_question(arr, ans):
     notice = pre_set.label2(tk, lbl_txt, "green")
     notice.place(x = 110, y = 16)
 
-def add_question():
+def add_question_window():
     clear_screen()
     txt_width = 42
     txt_height = 2
@@ -122,10 +122,21 @@ def get_file_path():
     
 def edit_quiz():
     if get_file_path():
-        add_question()
+        add_question_window()
 
 def study_quiz():
-    pass
+    if not get_file_path():
+        return;
+    
+    clear_screen();
+    quiz.read_from_file();
+
+    item = quiz.questions[0];
+
+    question_txt = str(1) + ") " + item.question;
+    question_lbl = pre_set.label2(tk, question_txt);
+
+    question_lbl.place(x = 10, y = 10);
 
 def window_menu():
     clear_screen()
