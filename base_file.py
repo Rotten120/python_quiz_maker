@@ -1,10 +1,6 @@
 from tkinter import *
 import ele_pre_sets as pre_set
 
-def clear_screen(tk):
-    for widget in tk.winfo_children():
-        widget.destroy()
-
 #window/s in obj refers to the same thing as page/s in parameters
 class Quiz_Maker(Tk):
     def __init__(self, title = "tkinter", size = "500x500", pages = {}):
@@ -28,7 +24,7 @@ class Window(Frame):
         super().__init__(master)
         self.parent = master
         self.configure(bg = bg_color)
-        self.display()   
+        self.display()
 
     def display(self):
         txt = pre_set.label2(self, "SAMPLE WINDOW")
