@@ -1,6 +1,7 @@
 from base_file import *
 import menu_window as mn
 import add_questions_window as aq
+import study_window as st
 
 if __name__ == "__main__":
     quiz_maker = Main_Screen(
@@ -12,13 +13,14 @@ if __name__ == "__main__":
         #list all windows to use in here
         #first window must be the 'main menu'
         mn.Menu,
-        aq.Add_Questions
+        aq.Add_Questions,
+        st.Study
     ]
 
     for window in windows:
         quiz_maker.add_window(window, pre_set.bg_color)
     
-    quiz_maker.set_window(windows[0])    
+    quiz_maker.set_window(windows[2])    
     quiz_maker.mainloop()
 
     print("MAIN")

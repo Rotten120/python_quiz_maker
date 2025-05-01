@@ -2,6 +2,7 @@ from base_file import *
 from tkinter import filedialog
 import create_new_file_window as nf
 import add_questions_window as aq
+import study_window as st
 
 class Menu(Window):
     def display(self):
@@ -16,8 +17,8 @@ class Menu(Window):
         study_txt = "Answer Quiz"
         
         new_quiz_btn = pre_set.button2(self, new_txt, lambda: self.create_new_path())
-        edit_quiz_btn = pre_set.button2(self, edit_txt, lambda: self.open_file_path()) 
-        study_quiz_btn = pre_set.button2(self, study_txt, lambda: self.parent.set_window(Menu))
+        edit_quiz_btn = pre_set.button2(self, edit_txt, lambda: self.edit_file_path()) 
+        study_quiz_btn = pre_set.button2(self, study_txt, lambda: self.study_file_path())
 
         title.place(relx = 0.5, rely = 0.3, anchor = "center")
         new_quiz_btn.place(relx = 0.5, rely = 0.5, anchor = "center")
@@ -37,14 +38,25 @@ class Menu(Window):
         screen.focus_set()
         screen.set_window(nf.New_File)
 
-    def open_file_path(self):
+    def get_file_path(self, prompt = "Select a file"):
         file_path = filedialog.askopenfilename(
-            title = "Select a file to edit",
+            title = prompt,
             filetypes = [("Text Files", "*.txt")]
         )
 
-        if file_path:
-            self.parent.windows[aq.Add_Questions].set_file_path(file_path)
+        return file_path
+
+    def edit_file_path(self):
+        file = self.get_file_path("Select a file to edit")
+        if file:
+            self.parent.windows[aq.Add_Questions].set_file_path(file)
             self.parent.set_window(aq.Add_Questions)
+
+    def study_file_path(self):
+        file = self.get_file_path("Select a file to study")
+        if file:
+            self.parent.windows[st.Study].set_file_path(file)
+            self.parent.set_window(st.Study)
+            
     
     
