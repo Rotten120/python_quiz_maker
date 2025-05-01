@@ -47,6 +47,12 @@ def entry1(tk, y_size = 1):
         bg = dark_color, fg = txt_color
     )
 
+def entry2(tk, y_size = 1):
+    return Entry(
+        tk, font = ("Arial", 15), width = y_size,
+        bg = dark_color, fg = txt_color
+    )
+
 def text1(tk, x_size = 1, y_size = 1):
     return Text(
         tk, font = ("Arial", 10),
