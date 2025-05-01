@@ -28,7 +28,14 @@ def button3(tk, txt, cmd):
         bg = dark_color, fg = "white",
         command = cmd
     )
-        
+
+def button4(tk, txt, txt_color = "white", txt_wrap = 295, txt_align = "left"):
+    return Button(
+        tk, text = txt, font = ("Arial", 10),
+        bg = bg_color, fg = txt_color,
+        wraplength = txt_wrap, justify = txt_align, anchor = "w"
+    )
+
 def label1(tk, txt, txt_color = "white"):
     return Label(
         tk, text = txt, font = ("Arial", 15, "bold"),
@@ -39,6 +46,13 @@ def label2(tk, txt, txt_color = "white"):
     return Label(
         tk, text = txt, font = ("Arial", 10),
         bg = bg_color, fg = txt_color
+    )
+
+def label3(tk, txt, txt_color = "white", txt_wrap = 300, txt_align = "left"):
+    return Label(
+        tk, text = txt, font = ("Arial", 10),
+        bg = bg_color, fg = txt_color,
+        wraplength = txt_wrap, justify = txt_align
     )
 
 def entry1(tk, y_size = 1):
