@@ -1,10 +1,9 @@
 from base_file import *
 import menu_window as mn
-import create_new_file_window as nf
 import add_questions_window as aq
 
 if __name__ == "__main__":
-    quiz_maker = Quiz_Maker(
+    quiz_maker = Main_Screen(
         "Python Quiz Maker",
         "400x400"
     )
@@ -13,7 +12,6 @@ if __name__ == "__main__":
         #list all windows to use in here
         #first window must be the 'main menu'
         mn.Menu,
-        nf.New_File,
         aq.Add_Questions
     ]
 
