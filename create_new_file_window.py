@@ -31,11 +31,12 @@ class New_File(Window):
             notice.configure(width = 20, anchor = "w")
             notice.place(x = 26, y = 8)
         
-        if file_path == "":
+        if not file_path.endswith(".txt"):
+            file_path += ".txt"
+
+        if file_path == ".txt" or file_path.count('.') != 1:
             draw_notice_lbl("* Invalid file name")
             return
-        elif not file_path.endswith(".txt"):
-            file_path += ".txt"
 
         if os.path.exists(file_path):
             draw_notice_lbl("* File already exists")
