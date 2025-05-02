@@ -41,7 +41,7 @@ class Menu(Window):
     def get_file_path(self, prompt = "Select a file"):
         file_path = filedialog.askopenfilename(
             title = prompt,
-            filetypes = [("Text Files", "*.txt")]
+            filetypes = [("Quiz Questions", "*.qmk")]
         )
 
         return file_path

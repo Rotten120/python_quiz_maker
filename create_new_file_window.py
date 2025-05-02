@@ -30,10 +30,10 @@ class New_File(Window):
             notice.configure(width = 20, anchor = "w")
             notice.place(x = 26, y = 8)
         
-        if not file_path.endswith(".txt"):
-            file_path += ".txt"
+        if not file_path.endswith(".qmk"):
+            file_path += ".qmk"
 
-        if file_path == ".txt" or file_path.count('.') != 1:
+        if file_path == ".qmk" or file_path.count('.') != 1:
             draw_notice_lbl("* Invalid file name")
             return
 
