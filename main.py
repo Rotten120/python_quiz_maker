@@ -20,7 +20,7 @@ if __name__ == "__main__":
     for window in windows:
         quiz_maker.add_window(window, pre_set.bg_color)
     
-    quiz_maker.set_window(windows[2])    
+    quiz_maker.set_window(windows[0])    
     quiz_maker.mainloop()
 
     print("MAIN")

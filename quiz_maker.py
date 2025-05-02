@@ -1,3 +1,5 @@
+import random
+
 class Question:
     def __init__(self, quest = "", opts = ["", "", "", ""], ans = ""):
         self.question = quest
@@ -71,7 +73,14 @@ class Quiz:
             quests_to_add.append(temp)
             self.items += 1
         self.write_to_file(quests_to_add)
-        
+
+    def shuffle(self):
+        size = len(self.questions)
+
+        for i in range(size // 2):
+            idx = random.randrange(0, size)
+            self.questions = self.questions[idx:] + self.questions[:idx]
+    
     def write_to_file(self, questions):
         file = open(self.file_path, 'a')
         block = " " * 4
@@ -95,7 +104,7 @@ class Quiz:
         
         file.close()
 
-    def read_from_file(self):
+    def read_from_file(self, do_shuffle = False):
         file = open(self.file_path, 'r')
         lines = file.read().split('\n')
         question_args = []
@@ -112,6 +121,9 @@ class Quiz:
                 self.items += 1
                 question_args.clear()
 
+        if do_shuffle:
+            self.shuffle()
+
     def print(self):
         for idx in range(len(self.questions)):
             self.questions[idx].print(idx + 1)
@@ -120,5 +132,6 @@ if __name__ == "__main__":
     file_path = "quiz_data.txt"
     quiz = Quiz(file_path)
     quiz.read_from_file()
+    quiz.shuffle()
     quiz.print()
     
