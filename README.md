@@ -20,14 +20,14 @@ Windows - These scripts are child classes of the main.py and serve as different 
 
 3. menu_window.py
 
-4. quiz_maker_with_gui.py
+4. show_score_window.py
 
-5. show_score_window.py
-
-6. stud_window.py
+5. stud_window.py
 
 Misc
 
 1. icon.ico - Icon of the app if to be build to an exe file
 
 2. quiz_maker_with_gui.py - Previous version of the app that is executable by itself (non-scriptable)
+
+3. quiz_data.qmk - Sample file that the app reads/writes to, different file extension but can be opened through notepad
