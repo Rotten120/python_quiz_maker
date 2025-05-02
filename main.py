@@ -22,5 +22,3 @@ if __name__ == "__main__":
     
     quiz_maker.set_window(windows[0])    
     quiz_maker.mainloop()
-
-    print("MAIN")

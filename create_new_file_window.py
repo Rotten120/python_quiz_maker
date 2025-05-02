@@ -4,6 +4,8 @@ import os
         
 class New_File(Window):
     def display(self):
+        cls(self)
+        
         inp_file = pre_set.entry1(self, 28)
         
         conf_txt = "Confirm"
@@ -15,8 +17,6 @@ class New_File(Window):
         
         inp_file.place(x = 26, y = 30)
         confirm.place(x = 85, y = 60)
-
-        print("CREATE")
 
     def check_file_dir(self, file_path):
         def get_master_window():
@@ -42,6 +42,6 @@ class New_File(Window):
             draw_notice_lbl("* File already exists")
         else:
             get_master_window().windows[aq.Add_Questions].set_file_path(file_path)
-            get_master_window().parent.set_window(aq.Add_Questions)
+            get_master_window().set_window(aq.Add_Questions)
             self.parent.destroy()
 

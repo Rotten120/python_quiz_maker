@@ -1,6 +1,10 @@
 from tkinter import *
 import ele_pre_sets as pre_set
 
+def cls(tk):
+    for widget in tk.winfo_children():
+        widget.destroy()
+
 #window/s in obj refers to the same thing as page/s in parameters
 #is the main screen
 class Main_Screen(Tk):

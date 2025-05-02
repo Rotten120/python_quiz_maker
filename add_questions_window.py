@@ -8,6 +8,8 @@ class Add_Questions(Window):
         self.quiz = q_maker.Quiz("")
 
     def display(self):
+        cls(self)
+        
         txt_width = 42
         txt_height = 2
 
@@ -46,8 +48,6 @@ class Add_Questions(Window):
         for i, opt in enumerate(opts):
             rb = pre_set.radbut1(self, correct_opt, opt)
             rb.place(x = 340, y = 115 + i * 70)
-
-        print("ADD QUESTION")
 
     def append_question(self, arr, ans):
         #arr is question, opta, optb, optc, optd respectively

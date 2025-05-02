@@ -6,6 +6,8 @@ import study_window as st
 
 class Menu(Window):
     def display(self):
+        cls(self)
+        
         title = Label(
             self, text = "QUIZ MAKER",
             font = ("Arial", 40, "bold"),
@@ -24,8 +26,6 @@ class Menu(Window):
         new_quiz_btn.place(relx = 0.5, rely = 0.5, anchor = "center")
         edit_quiz_btn.place(relx = 0.5, rely = 0.65, anchor = "center")
         study_quiz_btn.place(relx = 0.5, rely = 0.8, anchor = "center")
-
-        print("MENU")
 
     def create_new_path(self):
         size = "250x100"
