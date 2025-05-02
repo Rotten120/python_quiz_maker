@@ -32,7 +32,7 @@ class Menu(Window):
         x_pos = str(self.parent.winfo_x() + (400 - 250) // 2)
         y_pos = str(self.parent.winfo_y() + (400 - 100) // 2)
         pos = x_pos + "+" + y_pos
-        screen = Sub_Screen(self, "New file name", size, pos)
+        screen = Sub_Screen(self.parent, "New file name", size, pos)
         screen.add_window(nf.New_File, pre_set.bg_color)
         screen.grab_set()
         screen.focus_set()

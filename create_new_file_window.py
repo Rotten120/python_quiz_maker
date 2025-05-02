@@ -20,11 +20,10 @@ class New_File(Window):
 
     def check_file_dir(self, file_path):
         def get_master_window():
-            #SELF -> CREATE_NEW_FILE_WINDOW
-            #SELF.PARENT -> SUB_SCREEN MADE
-            #SELF.PARENT.PARENT -> MAIN_WINDOW
-            #SELF.PARENT.PARENT.PARENT -> QUIZ_MAKER
-            return self.parent.parent.parent
+            # SELF -> CREATE_NEW_FILE_WINDOW
+            # SELF.PARENT -> SUB_SCREEN MADE
+            # SELF.PARENT.PARENT -> QUIZ_MAKER
+            return self.parent.parent
         
         def draw_notice_lbl(text):
             notice = pre_set.label2(self, text, "red")
