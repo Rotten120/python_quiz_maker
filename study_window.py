@@ -1,5 +1,6 @@
 from base_file import *
 import menu_window as mn
+import show_score_window as ss
 import quiz_maker as q_maker
 
 class Study(Window):
@@ -10,6 +11,8 @@ class Study(Window):
         super().__init__(master, bg_color)
     
     def display(self):
+        cls(self)
+        
         def go_to_question(number):
             if number < 0 or number >= len(self.user_ans):
                 return
@@ -65,7 +68,7 @@ class Study(Window):
         back_btn = pre_set.button3(self, "<", decrement_idx)
 
         to_main_btn = pre_set.button3(self, "Back", lambda: self.parent.set_window(mn.Menu))
-        submit_btn = pre_set.button3(self, "Submit", lambda: print("yeS"))
+        submit_btn = pre_set.button3(self, "Submit", lambda: self.show_answers())
         
         go_to_question(self.idx)
         # --- initialize the elements --- # 
@@ -83,6 +86,7 @@ class Study(Window):
         #print(self.quiz.print())
 
     def set_file_path(self, file_path):
+        self.idx = 0
         self.quiz = q_maker.Quiz("")
         self.user_ans = []
         
@@ -90,4 +94,30 @@ class Study(Window):
         self.quiz.read_from_file(True)
         self.user_ans = ["" for i in range(len(self.quiz.questions))]
         self.display()
-    
+
+    def check_answers(self):
+        score = 0
+        for idx in range(len(self.quiz.questions)):
+            correct_ans = self.quiz.questions[idx].answer
+            if correct_ans == self.user_ans[idx]:
+                score += 1
+        return score
+
+    def show_answers(self):
+        def to_main():
+            self.parent.set_window(mn.Menu)
+            screen.destroy()
+            
+        
+        size = "200x200"
+        x_pos = str(self.parent.winfo_x() + (400 - 200) // 2)
+        y_pos = str(self.parent.winfo_y() + (400 - 200) // 2)
+        pos = x_pos + "+" + y_pos
+        screen = Sub_Screen(self, "Checking answers...", size, pos)
+        screen.add_window(ss.Show_Score, pre_set.bg_color)
+        screen.windows[ss.Show_Score].get_score(self.check_answers(), len(self.quiz.questions))
+        screen.protocol("WM_DELETE_WINDOW", to_main)
+        
+        screen.grab_set()
+        screen.focus_set()
+        screen.set_window(ss.Show_Score)
