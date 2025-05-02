@@ -1,6 +1,6 @@
 {
     "Question": What is the result of 7 + 5?
-    {
+    "Options": {
         "a": 11
         "b": 12
         "c": 13
@@ -10,7 +10,7 @@
 },
 {
     "Question": What is the product of 8 x 3?
-    {
+    "Options": {
         "a": 20
         "b": 24
         "c": 25
@@ -20,7 +20,7 @@
 },
 {
     "Question": What is the value of pi approximately?
-    {
+    "Options": {
         "a": 3
         "b": 3.14
         "c": 3.141
@@ -30,7 +30,7 @@
 },
 {
     "Question": If a rectangle has a length of 6 units and a width of 4 units, what is its area?
-    {
+    "Options": {
         "a": 10 squ
         "b": 16 squ
         "c": 20 squ
@@ -40,7 +40,7 @@
 },
 {
     "Question": What is the next number in the sequence: 2, 4, 6, 8, ...?
-    {
+    "Options": {
         "a": 10
         "b": 9
         "c": 12
