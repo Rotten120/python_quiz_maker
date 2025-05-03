@@ -26,5 +26,4 @@ class Show_Score(Window):
     def get_score(self, score, total):
         self.score = score
         self.total = total
-        self.display()
 

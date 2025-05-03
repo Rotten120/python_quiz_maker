@@ -9,7 +9,11 @@ class Add_Questions(Window):
 
     def display(self):
         cls(self)
-        
+
+        def clear_texts():
+            for text in texts:
+                text.configure(text = "")
+
         txt_width = 42
         txt_height = 2
 
@@ -26,7 +30,7 @@ class Add_Questions(Window):
         labels = [pre_set.label1(self, txt) for txt in label_texts]
         texts = [pre_set.text1(self, txt_width, txt_height) for i in label_texts]
 
-        reset = pre_set.button3(self, "Clear", lambda: self.parent.set_window(mn.Menu))
+        reset = pre_set.button3(self, "Clear", clear_texts)
         done = pre_set.button3(self, "Back", lambda: self.parent.set_window(mn.Menu))
         confirm = pre_set.button3(
             self, "Add", lambda: self.append_question(

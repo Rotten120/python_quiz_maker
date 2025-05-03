@@ -93,7 +93,6 @@ class Study(Window):
         self.quiz.file_path = file_path
         self.quiz.read_from_file(True)
         self.user_ans = ["" for i in range(len(self.quiz.questions))]
-        self.display()
 
     def check_answers(self):
         score = 0

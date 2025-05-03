@@ -21,6 +21,7 @@ class Main_Screen(Tk):
 
     def set_window(self, page):
         window = self.windows[page]
+        window.display()
         window.tkraise()
 
 class Sub_Screen(Toplevel):
@@ -38,6 +39,7 @@ class Sub_Screen(Toplevel):
 
     def set_window(self, page):
         window = self.windows[page]
+        window.display()
         window.tkraise()
 
 #base class to be inherited by windows to be made
@@ -46,7 +48,6 @@ class Window(Frame):
         super().__init__(master)
         self.parent = master
         self.configure(bg = bg_color)
-        self.display()
 
     def display(self):
         txt = pre_set.label2(self, "SAMPLE WINDOW")
