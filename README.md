@@ -1,11 +1,33 @@
-This repo includes the following files
+This repository creates a basic Quiz app that can create, edit, and read quizzes done by user
 
-a) ele_pre_sets.py: a code containing some pre-set arguments for elements like buttons, labels, radiobuttons, etc. This is made to shorten the expression needed in the main code and improve code readability
+The files included are as follows:
 
-b) quiz_maker.py: a code containing the classes needed namely Quiz and Question. These classes are used to manage the memory for the questions inputted
+Headers - Main files that runs a large portion of the program
 
-c) quiz_data.txt: a sample format of the program made similar to JSON file formatting
+1. base_file.py
 
-d) quiz_maker_with_gui.py: main code to run
+2. ele_pre_sets.py
 
-Dependencies: tkinter python
+3. main.py - file to run to start the app
+
+4. quiz_maker.py
+
+Windows - These scripts are child classes of the main.py and serve as different sections of the app
+
+1. add_questions_window.py
+
+2. create_new_file_window.py
+
+3. menu_window.py
+
+4. show_score_window.py
+
+5. stud_window.py
+
+Misc
+
+1. icon.ico - Icon of the app if to be build to an exe file
+
+2. quiz_maker_with_gui.py - Previous version of the app that is executable by itself (non-scriptable)
+
+3. quiz_data.qmk - Sample file that the app reads/writes to, different file extension but can be opened through notepad
