@@ -7,7 +7,7 @@ def cls(tk):
 
 #window/s in obj refers to the same thing as page/s in parameters
 #is the main screen
-class Main_Screen(Tk):
+class MainScreen(Tk):
     def __init__(self, title = "tkinter", size = "500x500", pages = {}):
         super().__init__()
         self.title(title)
@@ -24,7 +24,7 @@ class Main_Screen(Tk):
         window.display()
         window.tkraise()
 
-class Sub_Screen(Toplevel):
+class SubScreen(Toplevel):
     def __init__(self, master, title = "tkinter", size = "500x500", pos = "", pages = {}):
         super().__init__(master)
         self.parent = master

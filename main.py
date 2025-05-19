@@ -4,7 +4,7 @@ import add_questions_window as aq
 import study_window as st
 
 if __name__ == "__main__":
-    quiz_maker = Main_Screen(
+    quiz_maker = MainScreen(
         "Python Quiz Maker",
         "400x400"
     )
