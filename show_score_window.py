@@ -1,7 +1,7 @@
 from base_file import *
 import menu_window as mn
 
-class Show_Score(Window):
+class ShowScore(Window):
     def __init__(self, master, bg_color = "white"):
         self.score = 0
         self.total = 0

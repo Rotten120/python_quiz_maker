@@ -15,7 +15,7 @@ if __name__ == "__main__":
         #list all windows to use in here
         #first window must be the 'main menu'
         mn.Menu,
-        aq.Add_Questions,
+        aq.AddQuestions,
         st.Study
     ]
 

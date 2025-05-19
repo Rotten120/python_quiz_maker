@@ -2,7 +2,7 @@ from base_file import *
 import add_questions_window as aq
 import os
         
-class New_File(Window):
+class NewFile(Window):
     def display(self):
         cls(self)
         
@@ -40,7 +40,7 @@ class New_File(Window):
         if os.path.exists(file_path):
             draw_notice_lbl("* File already exists")
         else:
-            get_master_window().windows[aq.Add_Questions].set_file_path(file_path)
-            get_master_window().set_window(aq.Add_Questions)
+            get_master_window().windows[aq.AddQuestions].set_file_path(file_path)
+            get_master_window().set_window(aq.AddQuestions)
             self.parent.destroy()
 

@@ -112,10 +112,10 @@ class Study(Window):
         y_pos = str(self.parent.winfo_y() + 100)
         pos = x_pos + "+" + y_pos
         screen = SubScreen(self.parent, "Checking answers...", size, pos)
-        screen.add_window(ss.Show_Score, pre_set.bg_color)
-        screen.windows[ss.Show_Score].get_score(self.check_answers(), len(self.quiz.questions))
+        screen.add_window(ss.ShowScore, pre_set.bg_color)
+        screen.windows[ss.ShowScore].get_score(self.check_answers(), len(self.quiz.questions))
         screen.protocol("WM_DELETE_WINDOW", to_main)
         
         screen.grab_set()
         screen.focus_set()
-        screen.set_window(ss.Show_Score)
+        screen.set_window(ss.ShowScore)

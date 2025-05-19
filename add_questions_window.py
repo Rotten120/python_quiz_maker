@@ -2,7 +2,7 @@ from base_file import *
 import menu_window as mn
 import quiz_maker as q_maker
 
-class Add_Questions(Window):
+class AddQuestions(Window):
     def __init__(self, master, bg_color = "white"):
         super().__init__(master, bg_color)
         self.quiz = q_maker.Quiz("")

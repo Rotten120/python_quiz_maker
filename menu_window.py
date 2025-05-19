@@ -33,10 +33,10 @@ class Menu(Window):
         y_pos = str(self.parent.winfo_y() + (400 - 100) // 2)
         pos = x_pos + "+" + y_pos
         screen = SubScreen(self.parent, "New file name", size, pos)
-        screen.add_window(nf.New_File, pre_set.bg_color)
+        screen.add_window(nf.NewFile, pre_set.bg_color)
         screen.grab_set()
         screen.focus_set()
-        screen.set_window(nf.New_File)
+        screen.set_window(nf.NewFile)
 
     def get_file_path(self, prompt = "Select a file"):
         file_path = filedialog.askopenfilename(
@@ -49,8 +49,8 @@ class Menu(Window):
     def edit_file_path(self):
         file = self.get_file_path("Select a file to edit")
         if file:
-            self.parent.windows[aq.Add_Questions].set_file_path(file)
-            self.parent.set_window(aq.Add_Questions)
+            self.parent.windows[aq.AddQuestions].set_file_path(file)
+            self.parent.set_window(aq.AddQuestions)
 
     def study_file_path(self):
         file = self.get_file_path("Select a file to study")
