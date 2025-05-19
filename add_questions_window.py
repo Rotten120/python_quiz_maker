@@ -12,7 +12,7 @@ class AddQuestions(Window):
 
         def clear_texts():
             for text in texts:
-                text.configure(text = "")
+                text.delete("1.0", END)
 
         txt_width = 42
         txt_height = 2
@@ -58,7 +58,7 @@ class AddQuestions(Window):
         for inp in (arr + [ans]):
             if inp == "":
                 lbl_txt = "* Empty input. Fill up all items"
-                notice = pre_set.label2(self, lbl_txt, "red")
+                notice = pre_set.lbl_text(self, lbl_txt, "red")
                 notice.place(x = 110, y = 16)
                 return
 
@@ -66,7 +66,7 @@ class AddQuestions(Window):
         self.quiz.append(temp_question)
         
         lbl_txt = "* Question addded"
-        notice = pre_set.label2(self, lbl_txt, "green")
+        notice = pre_set.lbl_text(self, lbl_txt, "green")
         notice.place(x = 110, y = 16)
 
     def set_file_path(self, file_path):

@@ -26,7 +26,7 @@ class NewFile(Window):
             return self.parent.parent
         
         def draw_notice_lbl(text):
-            notice = pre_set.label2(self, text, "red")
+            notice = pre_set.lbl_text(self, text, "red")
             notice.configure(width = 20, anchor = "w")
             notice.place(x = 26, y = 8)
         
