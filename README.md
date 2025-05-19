@@ -12,6 +12,12 @@ Headers - Main files that runs a large portion of the program
 
 4. quiz_maker.py
 
+5. main_screen.py
+
+6. sub_screen.py
+
+7. window.py
+
 Windows - These scripts are child classes of the main.py and serve as different sections of the app
 
 1. add_questions_window.py
