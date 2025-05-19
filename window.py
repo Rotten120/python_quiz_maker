@@ -1,6 +1,6 @@
-from tkinter import Frame as frame
+from tkinter import Frame
 
-class Window(frame):
+class Window(Frame):
     def __init__(self, master, bg_color = "white"):
         super().__init__(master)
         self.parent = master

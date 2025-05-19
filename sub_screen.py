@@ -1,6 +1,6 @@
-from tkinter import Toplevel as top_level
+from tkinter import Toplevel
 
-class SubScreen(top_level):
+class SubScreen(Toplevel):
     def __init__(self, master, title = "tkinter", size = "500x500", pos = "", pages = {}):
         super().__init__(master)
         self.parent = master

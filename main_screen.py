@@ -1,6 +1,6 @@
-from tkinter import Tk as tk_main
+from tkinter import Tk
 
-class MainScreen(tk_main):
+class MainScreen(Tk):
     def __init__(self, title = "tkinter", size = "500x500", pages = {}):
         super().__init__()
         self.title(title)
