@@ -6,10 +6,10 @@ class New_File(Window):
     def display(self):
         cls(self)
         
-        inp_file = pre_set.entry1(self, 28)
+        inp_file = pre_set.entry_text(self, 28)
         
         conf_txt = "Confirm"
-        confirm = pre_set.button3(
+        confirm = pre_set.btn_text(
             self, conf_txt, lambda: self.check_file_dir(inp_file.get())
         )
 

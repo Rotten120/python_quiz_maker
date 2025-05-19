@@ -48,12 +48,12 @@ class Study(Window):
         
         
         # --- initialize the elements --- #
-        quest_lbl = pre_set.label3(self, "")
+        quest_lbl = pre_set.lbl_justified(self, "")
         opt_btns = {}
         opts = ['a', 'b', 'c', 'd']
         
         for key in opts:
-            opt_btns[key] = pre_set.button4(self, "")
+            opt_btns[key] = pre_set.btn_justified(self, "")
             opt_btns[key].configure(width = 37)
 
         #this is out of the loop since when included in the loop
@@ -63,12 +63,12 @@ class Study(Window):
         opt_btns['c'].configure(command = lambda: update_ans(self.idx, 'c'))
         opt_btns['d'].configure(command = lambda: update_ans(self.idx, 'd'))
 
-        item_ctr = pre_set.label1(self, "")
-        next_btn = pre_set.button3(self, ">", increment_idx)
-        back_btn = pre_set.button3(self, "<", decrement_idx)
+        item_ctr = pre_set.lbl_title(self, "")
+        next_btn = pre_set.btn_text(self, ">", increment_idx)
+        back_btn = pre_set.btn_text(self, "<", decrement_idx)
 
-        to_main_btn = pre_set.button3(self, "Back", lambda: self.parent.set_window(mn.Menu))
-        submit_btn = pre_set.button3(self, "Submit", lambda: self.show_answers())
+        to_main_btn = pre_set.btn_text(self, "Back", lambda: self.parent.set_window(mn.Menu))
+        submit_btn = pre_set.btn_text(self, "Submit", lambda: self.show_answers())
         
         go_to_question(self.idx)
         # --- initialize the elements --- # 

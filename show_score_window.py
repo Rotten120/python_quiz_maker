@@ -14,9 +14,9 @@ class Show_Score(Window):
             
         cls(self)
 
-        notice_lbl = pre_set.label1(self, "SCORE:")
-        score_lbl = pre_set.label1(self, str(self.score) + " / " + str(self.total))
-        back_btn = pre_set.button3(self, "To Main", to_main)
+        notice_lbl = pre_set.lbl_title(self, "SCORE:")
+        score_lbl = pre_set.lbl_title(self, str(self.score) + " / " + str(self.total))
+        back_btn = pre_set.btn_text(self, "To Main", to_main)
         back_btn.configure(width = 20)
 
         notice_lbl.pack(pady = 28)

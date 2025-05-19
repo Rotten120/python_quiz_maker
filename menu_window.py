@@ -18,9 +18,9 @@ class Menu(Window):
         edit_txt = "Add to Existing Quiz"
         study_txt = "Answer Quiz"
         
-        new_quiz_btn = pre_set.button2(self, new_txt, lambda: self.create_new_path())
-        edit_quiz_btn = pre_set.button2(self, edit_txt, lambda: self.edit_file_path()) 
-        study_quiz_btn = pre_set.button2(self, study_txt, lambda: self.study_file_path())
+        new_quiz_btn = pre_set.btn_subtitle(self, new_txt, lambda: self.create_new_path())
+        edit_quiz_btn = pre_set.btn_subtitle(self, edit_txt, lambda: self.edit_file_path()) 
+        study_quiz_btn = pre_set.btn_subtitle(self, study_txt, lambda: self.study_file_path())
 
         title.place(relx = 0.5, rely = 0.3, anchor = "center")
         new_quiz_btn.place(relx = 0.5, rely = 0.5, anchor = "center")

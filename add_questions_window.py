@@ -26,13 +26,13 @@ class Add_Questions(Window):
             "Option D"
         ]
 
-        cor_opt = pre_set.label2(self, cor_opt_txt)
-        labels = [pre_set.label1(self, txt) for txt in label_texts]
-        texts = [pre_set.text1(self, txt_width, txt_height) for i in label_texts]
+        cor_opt = pre_set.lbl_text(self, cor_opt_txt)
+        labels = [pre_set.lbl_title(self, txt) for txt in label_texts]
+        texts = [pre_set.text(self, txt_width, txt_height) for i in label_texts]
 
-        reset = pre_set.button3(self, "Clear", clear_texts)
-        done = pre_set.button3(self, "Back", lambda: self.parent.set_window(mn.Menu))
-        confirm = pre_set.button3(
+        reset = pre_set.btn_text(self, "Clear", clear_texts)
+        done = pre_set.btn_text(self, "Back", lambda: self.parent.set_window(mn.Menu))
+        confirm = pre_set.btn_text(
             self, "Add", lambda: self.append_question(
                 [text.get("1.0", "end-1c") for text in texts],
                 correct_opt.get()
@@ -50,7 +50,7 @@ class Add_Questions(Window):
         done.place(x = 5, y = 365, width = 130)
 
         for i, opt in enumerate(opts):
-            rb = pre_set.radbut1(self, correct_opt, opt)
+            rb = pre_set.radbut(self, correct_opt, opt)
             rb.place(x = 340, y = 115 + i * 70)
 
     def append_question(self, arr, ans):

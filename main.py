@@ -8,6 +8,8 @@ if __name__ == "__main__":
         "Python Quiz Maker",
         "400x400"
     )
+
+    quiz_maker.iconbitmap("icon.ico")
     
     windows = [
         #list all windows to use in here
