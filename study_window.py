@@ -68,7 +68,7 @@ class Study(Window):
         back_btn = pre_set.btn_text(self, "<", decrement_idx)
 
         to_main_btn = pre_set.btn_text(self, "Back", lambda: self.parent.set_window(mn.Menu))
-        submit_btn = pre_set.btn_text(self, "Submit", lambda: self.show_answers())
+        submit_btn = pre_set.btn_text(self, "Submit", lambda: self.__show_answers())
         
         go_to_question(self.idx)
         # --- initialize the elements --- # 
@@ -94,7 +94,7 @@ class Study(Window):
         self.quiz.read_from_file(True)
         self.user_ans = ["" for i in range(len(self.quiz.questions))]
 
-    def check_answers(self):
+    def __check_answers(self):
         score = 0
         for idx in range(len(self.quiz.questions)):
             correct_ans = self.quiz.questions[idx].answer
@@ -102,7 +102,7 @@ class Study(Window):
                 score += 1
         return score
 
-    def show_answers(self):
+    def __show_answers(self):
         def to_main():
             self.parent.set_window(mn.Menu)
             screen.destroy()
@@ -113,7 +113,7 @@ class Study(Window):
         pos = x_pos + "+" + y_pos
         screen = SubScreen(self.parent, "Checking answers...", size, pos)
         screen.add_window(ss.ShowScore, pre_set.bg_color)
-        screen.windows[ss.ShowScore].get_score(self.check_answers(), len(self.quiz.questions))
+        screen.windows[ss.ShowScore].get_score(self.__check_answers(), len(self.quiz.questions))
         screen.protocol("WM_DELETE_WINDOW", to_main)
         
         screen.grab_set()

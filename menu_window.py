@@ -18,16 +18,16 @@ class Menu(Window):
         edit_txt = "Add to Existing Quiz"
         study_txt = "Answer Quiz"
         
-        new_quiz_btn = pre_set.btn_subtitle(self, new_txt, lambda: self.create_new_path())
-        edit_quiz_btn = pre_set.btn_subtitle(self, edit_txt, lambda: self.edit_file_path()) 
-        study_quiz_btn = pre_set.btn_subtitle(self, study_txt, lambda: self.study_file_path())
+        new_quiz_btn = pre_set.btn_subtitle(self, new_txt, lambda: self.__create_new_path())
+        edit_quiz_btn = pre_set.btn_subtitle(self, edit_txt, lambda: self.__edit_file_path()) 
+        study_quiz_btn = pre_set.btn_subtitle(self, study_txt, lambda: self.__study_file_path())
 
         title.place(relx = 0.5, rely = 0.3, anchor = "center")
         new_quiz_btn.place(relx = 0.5, rely = 0.5, anchor = "center")
         edit_quiz_btn.place(relx = 0.5, rely = 0.65, anchor = "center")
         study_quiz_btn.place(relx = 0.5, rely = 0.8, anchor = "center")
 
-    def create_new_path(self):
+    def __create_new_path(self):
         size = "250x100"
         x_pos = str(self.parent.winfo_x() + (400 - 250) // 2)
         y_pos = str(self.parent.winfo_y() + (400 - 100) // 2)
@@ -38,7 +38,7 @@ class Menu(Window):
         screen.focus_set()
         screen.set_window(nf.NewFile)
 
-    def get_file_path(self, prompt = "Select a file"):
+    def __get_file_path(self, prompt = "Select a file"):
         file_path = filedialog.askopenfilename(
             title = prompt,
             filetypes = [("Quiz Questions", "*.qmk")]
@@ -46,14 +46,14 @@ class Menu(Window):
 
         return file_path
 
-    def edit_file_path(self):
-        file = self.get_file_path("Select a file to edit")
+    def __edit_file_path(self):
+        file = self.__get_file_path("Select a file to edit")
         if file:
             self.parent.windows[aq.AddQuestions].set_file_path(file)
             self.parent.set_window(aq.AddQuestions)
 
-    def study_file_path(self):
-        file = self.get_file_path("Select a file to study")
+    def __study_file_path(self):
+        file = self.__get_file_path("Select a file to study")
         if file:
             self.parent.windows[st.Study].set_file_path(file)
             self.parent.set_window(st.Study)

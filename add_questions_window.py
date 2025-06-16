@@ -33,7 +33,7 @@ class AddQuestions(Window):
         reset = pre_set.btn_text(self, "Clear", clear_texts)
         done = pre_set.btn_text(self, "Back", lambda: self.parent.set_window(mn.Menu))
         confirm = pre_set.btn_text(
-            self, "Add", lambda: self.append_question(
+            self, "Add", lambda: self.__append_question(
                 [text.get("1.0", "end-1c") for text in texts],
                 correct_opt.get()
             )    
@@ -53,7 +53,7 @@ class AddQuestions(Window):
             rb = pre_set.radbut(self, correct_opt, opt)
             rb.place(x = 340, y = 115 + i * 70)
 
-    def append_question(self, arr, ans):
+    def __append_question(self, arr, ans):
         #arr is question, opta, optb, optc, optd respectively
         for inp in (arr + [ans]):
             if inp == "":

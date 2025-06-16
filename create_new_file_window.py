@@ -10,7 +10,7 @@ class NewFile(Window):
         
         conf_txt = "Confirm"
         confirm = pre_set.btn_text(
-            self, conf_txt, lambda: self.check_file_dir(inp_file.get())
+            self, conf_txt, lambda: self.__check_file_dir(inp_file.get())
         )
 
         confirm.configure(width = 10)
@@ -18,7 +18,7 @@ class NewFile(Window):
         inp_file.place(x = 26, y = 30)
         confirm.place(x = 85, y = 60)
 
-    def check_file_dir(self, file_path):
+    def __check_file_dir(self, file_path):
         def get_master_window():
             # SELF -> CREATE_NEW_FILE_WINDOW
             # SELF.PARENT -> SUB_SCREEN MADE
