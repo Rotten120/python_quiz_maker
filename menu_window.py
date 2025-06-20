@@ -29,10 +29,10 @@ class Menu(Window):
 
     def __create_new_path(self):
         size = "250x100"
-        x_pos = str(self.parent.winfo_x() + (400 - 250) // 2)
-        y_pos = str(self.parent.winfo_y() + (400 - 100) // 2)
+        x_pos = str(self.get_parent().winfo_x() + (400 - 250) // 2)
+        y_pos = str(self.get_parent().winfo_y() + (400 - 100) // 2)
         pos = x_pos + "+" + y_pos
-        screen = SubScreen(self.parent, "New file name", size, pos)
+        screen = SubScreen(self.get_parent(), "New file name", size, pos)
         screen.add_window(nf.NewFile, pre_set.bg_color)
         screen.grab_set()
         screen.focus_set()
@@ -49,14 +49,14 @@ class Menu(Window):
     def __edit_file_path(self):
         file = self.__get_file_path("Select a file to edit")
         if file:
-            self.parent.windows[aq.AddQuestions].set_file_path(file)
-            self.parent.set_window(aq.AddQuestions)
+            self.get_parent().windows[aq.AddQuestions].set_file_path(file)
+            self.get_parent().set_window(aq.AddQuestions)
 
     def __study_file_path(self):
         file = self.__get_file_path("Select a file to study")
         if file:
-            self.parent.windows[st.Study].set_file_path(file)
-            self.parent.set_window(st.Study)
+            self.get_parent().windows[st.Study].set_file_path(file)
+            self.get_parent().set_window(st.Study)
             
     
     

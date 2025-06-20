@@ -23,7 +23,7 @@ class NewFile(Window):
             # SELF -> CREATE_NEW_FILE_WINDOW
             # SELF.PARENT -> SUB_SCREEN MADE
             # SELF.PARENT.PARENT -> QUIZ_MAKER
-            return self.parent.parent
+            return self.get_parent().get_parent()
         
         def draw_notice_lbl(text):
             notice = pre_set.lbl_text(self, text, "red")
@@ -42,5 +42,5 @@ class NewFile(Window):
         else:
             get_master_window().windows[aq.AddQuestions].set_file_path(file_path)
             get_master_window().set_window(aq.AddQuestions)
-            self.parent.destroy()
+            self.get_parent().destroy()
 

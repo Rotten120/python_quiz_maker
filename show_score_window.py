@@ -9,8 +9,8 @@ class ShowScore(Window):
         
     def display(self):
         def to_main():
-            self.parent.parent.set_window(mn.Menu)
-            self.parent.destroy()
+            self.get_parent().get_parent().set_window(mn.Menu)
+            self.get_parent().destroy()
             
         cls(self)
 

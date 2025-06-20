@@ -31,7 +31,7 @@ class AddQuestions(Window):
         texts = [pre_set.text(self, txt_width, txt_height) for i in label_texts]
 
         reset = pre_set.btn_text(self, "Clear", clear_texts)
-        done = pre_set.btn_text(self, "Back", lambda: self.parent.set_window(mn.Menu))
+        done = pre_set.btn_text(self, "Back", lambda: self.get_parent().set_window(mn.Menu))
         confirm = pre_set.btn_text(
             self, "Add", lambda: self.__append_question(
                 [text.get("1.0", "end-1c") for text in texts],

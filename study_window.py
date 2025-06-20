@@ -104,14 +104,14 @@ class Study(Window):
 
     def __show_answers(self):
         def to_main():
-            self.parent.set_window(mn.Menu)
+            self.get_parent().set_window(mn.Menu)
             screen.destroy()
             
         size = "200x200"
-        x_pos = str(self.parent.winfo_x() + 100)
-        y_pos = str(self.parent.winfo_y() + 100)
+        x_pos = str(self.get_parent().winfo_x() + 100)
+        y_pos = str(self.get_parent().winfo_y() + 100)
         pos = x_pos + "+" + y_pos
-        screen = SubScreen(self.parent, "Checking answers...", size, pos)
+        screen = SubScreen(self.get_parent(), "Checking answers...", size, pos)
         screen.add_window(ss.ShowScore, pre_set.bg_color)
         screen.windows[ss.ShowScore].get_score(self.__check_answers(), len(self.quiz.questions))
         screen.protocol("WM_DELETE_WINDOW", to_main)
